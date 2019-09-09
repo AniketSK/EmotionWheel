@@ -1,0 +1,573 @@
+{
+  "name": "all",
+  "subEmotions": [
+    {
+      "name": "Surprised",
+      "subEmotions": [
+        {
+          "name": "Startled",
+          "subEmotions": [
+            {
+              "name": "Shocked",
+              "subEmotions": []
+            },
+            {
+              "name": "Dismayed",
+              "subEmotions": []
+            }
+          ]
+        },
+        {
+          "name": "Confused",
+          "subEmotions": [
+            {
+              "name": "Disillusioned",
+              "subEmotions": []
+            },
+            {
+              "name": "Perplexed",
+              "subEmotions": []
+            }
+          ]
+        },
+        {
+          "name": "Amazed",
+          "subEmotions": [
+            {
+              "name": "Astonished",
+              "subEmotions": []
+            },
+            {
+              "name": "Awe",
+              "subEmotions": []
+            }
+          ]
+        },
+        {
+          "name": "Excited",
+          "subEmotions": [
+            {
+              "name": "Eager",
+              "subEmotions": []
+            },
+            {
+              "name": "Energetic",
+              "subEmotions": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Happy",
+      "subEmotions": [
+        {
+          "name": "Playful",
+          "subEmotions": [
+            {
+              "name": "Aroused",
+              "subEmotions": []
+            },
+            {
+              "name": "Cheeky",
+              "subEmotions": []
+            }
+          ]
+        },
+        {
+          "name": "Content",
+          "subEmotions": [
+            {
+              "name": "Free",
+              "subEmotions": []
+            },
+            {
+              "name": "Joyful",
+              "subEmotions": []
+            }
+          ]
+        },
+        {
+          "name": "Interested",
+          "subEmotions": [
+            {
+              "name": "Curious",
+              "subEmotions": []
+            },
+            {
+              "name": "Inquisitive",
+              "subEmotions": []
+            }
+          ]
+        },
+        {
+          "name": "Proud",
+          "subEmotions": [
+            {
+              "name": "Successful",
+              "subEmotions": []
+            },
+            {
+              "name": "Confident",
+              "subEmotions": []
+            }
+          ]
+        },
+        {
+          "name": "Accepted",
+          "subEmotions": [
+            {
+              "name": "Respected",
+              "subEmotions": []
+            },
+            {
+              "name": "Valued",
+              "subEmotions": []
+            }
+          ]
+        },
+        {
+          "name": "Powerful",
+          "subEmotions": [
+            {
+              "name": "Courageous",
+              "subEmotions": []
+            },
+            {
+              "name": "Creative",
+              "subEmotions": []
+            }
+          ]
+        },
+        {
+          "name": "Peaceful",
+          "subEmotions": [
+            {
+              "name": "Loving",
+              "subEmotions": []
+            },
+            {
+              "name": "Thankful",
+              "subEmotions": []
+            }
+          ]
+        },
+        {
+          "name": "Trusting",
+          "subEmotions": [
+            {
+              "name": "Sensitive",
+              "subEmotions": []
+            },
+            {
+              "name": "Intimate",
+              "subEmotions": []
+            }
+          ]
+        },
+        {
+          "name": "Optimistic",
+          "subEmotions": [
+            {
+              "name": "Hopeful",
+              "subEmotions": []
+            },
+            {
+              "name": "Inspired",
+              "subEmotions": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Bad",
+      "subEmotions": [
+        {
+          "name": "Bored",
+          "subEmotions": [
+            {
+              "name": "Indifferent",
+              "subEmotions": []
+            },
+            {
+              "name": "Apathetic",
+              "subEmotions": []
+            }
+          ]
+        },
+        {
+          "name": "Busy",
+          "subEmotions": [
+            {
+              "name": "Pressured",
+              "subEmotions": []
+            },
+            {
+              "name": "Rushed",
+              "subEmotions": []
+            }
+          ]
+        },
+        {
+          "name": "Stressed",
+          "subEmotions": [
+            {
+              "name": "Overwhelmed",
+              "subEmotions": []
+            },
+            {
+              "name": "Out of control",
+              "subEmotions": []
+            }
+          ]
+        },
+        {
+          "name": "Tired",
+          "subEmotions": [
+            {
+              "name": "Sleepy",
+              "subEmotions": []
+            },
+            {
+              "name": "Unfocused",
+              "subEmotions": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fearful",
+      "subEmotions": [
+        {
+          "name": "Scared",
+          "subEmotions": [
+            {
+              "name": "Helpless",
+              "subEmotions": []
+            },
+            {
+              "name": "Frightened",
+              "subEmotions": []
+            }
+          ]
+        },
+        {
+          "name": "Anxious",
+          "subEmotions": [
+            {
+              "name": "Overwhelmed",
+              "subEmotions": []
+            },
+            {
+              "name": "Worried",
+              "subEmotions": []
+            }
+          ]
+        },
+        {
+          "name": "Insecure",
+          "subEmotions": [
+            {
+              "name": "Inadequate",
+              "subEmotions": []
+            },
+            {
+              "name": "Inferior",
+              "subEmotions": []
+            }
+          ]
+        },
+        {
+          "name": "Weak",
+          "subEmotions": [
+            {
+              "name": "Worthless",
+              "subEmotions": []
+            },
+            {
+              "name": "Insignificant",
+              "subEmotions": []
+            }
+          ]
+        },
+        {
+          "name": "Rejected",
+          "subEmotions": [
+            {
+              "name": "Excluded",
+              "subEmotions": []
+            },
+            {
+              "name": "Persecuted",
+              "subEmotions": []
+            }
+          ]
+        },
+        {
+          "name": "Threatened",
+          "subEmotions": [
+            {
+              "name": "Nervous",
+              "subEmotions": []
+            },
+            {
+              "name": "Exposed",
+              "subEmotions": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Angry",
+      "subEmotions": [
+        {
+          "name": "Let down",
+          "subEmotions": [
+            {
+              "name": "Betrayed",
+              "subEmotions": []
+            },
+            {
+              "name": "Resentful",
+              "subEmotions": []
+            }
+          ]
+        },
+        {
+          "name": "Humiliated",
+          "subEmotions": [
+            {
+              "name": "Disrespected",
+              "subEmotions": []
+            },
+            {
+              "name": "Ridiculed",
+              "subEmotions": []
+            }
+          ]
+        },
+        {
+          "name": "Bitter",
+          "subEmotions": [
+            {
+              "name": "Indignant",
+              "subEmotions": []
+            },
+            {
+              "name": "Violated",
+              "subEmotions": []
+            }
+          ]
+        },
+        {
+          "name": "Mad",
+          "subEmotions": [
+            {
+              "name": "Furious",
+              "subEmotions": []
+            },
+            {
+              "name": "Jealous",
+              "subEmotions": []
+            }
+          ]
+        },
+        {
+          "name": "Aggressive",
+          "subEmotions": [
+            {
+              "name": "Provoked",
+              "subEmotions": []
+            },
+            {
+              "name": "Hostile",
+              "subEmotions": []
+            }
+          ]
+        },
+        {
+          "name": "Frustrated",
+          "subEmotions": [
+            {
+              "name": "Infuriated",
+              "subEmotions": []
+            },
+            {
+              "name": "Annoyed",
+              "subEmotions": []
+            }
+          ]
+        },
+        {
+          "name": "Distant",
+          "subEmotions": [
+            {
+              "name": "Withdrawn",
+              "subEmotions": []
+            },
+            {
+              "name": "Numb",
+              "subEmotions": []
+            }
+          ]
+        },
+        {
+          "name": "Critical",
+          "subEmotions": [
+            {
+              "name": "Skeptical",
+              "subEmotions": []
+            },
+            {
+              "name": "Dismissive",
+              "subEmotions": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Disgusted",
+      "subEmotions": [
+        {
+          "name": "Disapproving",
+          "subEmotions": [
+            {
+              "name": "Judgemental",
+              "subEmotions": []
+            },
+            {
+              "name": "Embarassed",
+              "subEmotions": []
+            }
+          ]
+        },
+        {
+          "name": "Disappointed",
+          "subEmotions": [
+            {
+              "name": "Appalled",
+              "subEmotions": []
+            },
+            {
+              "name": "Revolted",
+              "subEmotions": []
+            }
+          ]
+        },
+        {
+          "name": "Awful",
+          "subEmotions": [
+            {
+              "name": "Nauseated",
+              "subEmotions": []
+            },
+            {
+              "name": "Detestable",
+              "subEmotions": []
+            }
+          ]
+        },
+        {
+          "name": "Repelled",
+          "subEmotions": [
+            {
+              "name": "Horrified",
+              "subEmotions": []
+            },
+            {
+              "name": "Hesitant",
+              "subEmotions": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sad",
+      "subEmotions": [
+        {
+          "name": "Hurt",
+          "subEmotions": [
+            {
+              "name": "Embarassed",
+              "subEmotions": []
+            },
+            {
+              "name": "Disappointed",
+              "subEmotions": []
+            }
+          ]
+        },
+        {
+          "name": "Depressed",
+          "subEmotions": [
+            {
+              "name": "Inferior",
+              "subEmotions": []
+            },
+            {
+              "name": "Empty",
+              "subEmotions": []
+            }
+          ]
+        },
+        {
+          "name": "Guilty",
+          "subEmotions": [
+            {
+              "name": "Ashamed",
+              "subEmotions": []
+            },
+            {
+              "name": "Remorseful",
+              "subEmotions": []
+            }
+          ]
+        },
+        {
+          "name": "Despair",
+          "subEmotions": [
+            {
+              "name": "Grief",
+              "subEmotions": []
+            },
+            {
+              "name": "Powerlessness",
+              "subEmotions": []
+            }
+          ]
+        },
+        {
+          "name": "Vulnerable",
+          "subEmotions": [
+            {
+              "name": "Victimized",
+              "subEmotions": []
+            },
+            {
+              "name": "Fragile",
+              "subEmotions": []
+            }
+          ]
+        },
+        {
+          "name": "Lonely",
+          "subEmotions": [
+            {
+              "name": "Isolated",
+              "subEmotions": []
+            },
+            {
+              "name": "Abandoned",
+              "subEmotions": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
