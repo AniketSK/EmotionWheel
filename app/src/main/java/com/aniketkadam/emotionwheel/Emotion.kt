@@ -1,9 +1,10 @@
 package com.aniketkadam.emotionwheel
 
 import androidx.annotation.ColorRes
+import com.google.gson.annotations.SerializedName
 
 data class Emotion(
-    val name: String,
-    @ColorRes val color: Int,
-    val subEmotions: List<Emotion>
+    @field:SerializedName("name") val name: String,
+    @field:SerializedName("color") @ColorRes val color: Int,
+    @field:SerializedName("subEmotions") val subEmotions: List<Emotion>
 )
