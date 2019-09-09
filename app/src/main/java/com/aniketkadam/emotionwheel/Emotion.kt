@@ -7,4 +7,6 @@ data class Emotion(
     @field:SerializedName("name") val name: String,
     @field:SerializedName("color") @ColorRes val color: Int,
     @field:SerializedName("subEmotions") val subEmotions: List<Emotion>
-)
+) {
+    override fun toString(): String = name
+}
