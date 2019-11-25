@@ -3,7 +3,6 @@ package com.aniketkadam.emotionwheel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import timber.log.Timber
 
 class EmotionListViewModel(repo: EmotionRepo) : ViewModel() {
 
@@ -19,7 +18,15 @@ class EmotionListViewModel(repo: EmotionRepo) : ViewModel() {
     }
 
     fun onListItemClicked(clickedEmotion: Emotion?) {
-        Timber.d("item clicked ${clickedEmotion}")
+        clickedEmotion?.subEmotions?.let {
+
+            if (it.isNotEmpty()) { // There's more list to show
+                _viewState.postValue(ViewState(it))
+            } else // Final emotion
+            {
+                _viewState.postValue(ViewState(listOf(clickedEmotion)))
+            }
+        }
     }
 
 }
