@@ -29,6 +29,9 @@ class EmotionListViewModel(repo: EmotionRepo) : ViewModel() {
         }
     }
 
+    fun backPressed() {
+        TODO()
+    }
 }
 
 data class ViewState(
