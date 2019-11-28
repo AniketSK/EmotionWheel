@@ -10,6 +10,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.ListFragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import kotlinx.android.synthetic.main.emotion_list_fragment_layout.*
 
 class EmotionListFragment : ListFragment() {
 
@@ -50,6 +51,7 @@ class EmotionListFragment : ListFragment() {
 
     private fun renderState(state: ViewState) {
         listAdapter = getAdapter(state.currentEmotion.subEmotions)
+        empty.text = state.currentEmotion.name
     }
 
     private fun getAdapter(emotions: List<Emotion>) = ArrayAdapter<Emotion>(
