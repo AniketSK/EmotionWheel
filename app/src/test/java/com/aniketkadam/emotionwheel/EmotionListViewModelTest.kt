@@ -34,4 +34,21 @@ class EmotionListViewModelTest {
         vm.viewState.test()
             .assertValue { it.currentEmotion.name == "all" && it.currentEmotion.subEmotions.size == 7 }
     }
+
+    @Test
+    fun `when an item is clicked it becomes the currently selected emotion`() {
+        val clickedItem = vm.viewState.value!!.currentEmotion.subEmotions[1]
+        vm.onListItemClicked(clickedItem)
+        vm.viewState.test().assertValue(ViewState(clickedItem))
+    }
+
+    @Test
+    fun `when an item is clicked and then back is pressed, it goes back to the initial state`() {
+        val initalValue = vm.viewState.value!!.currentEmotion
+        val clickedItem = initalValue.subEmotions[1]
+        vm.onListItemClicked(clickedItem)
+        vm.viewState.test().assertValue(ViewState(clickedItem))
+        vm.backPressed()
+        vm.viewState.test().assertValue(ViewState(initalValue))
+    }
 }
