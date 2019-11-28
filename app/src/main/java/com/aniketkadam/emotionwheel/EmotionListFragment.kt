@@ -56,7 +56,7 @@ class EmotionListFragment : ListFragment() {
 
     private fun getAdapter(emotions: List<Emotion>) = ArrayAdapter<Emotion>(
         requireActivity(),
-        android.R.layout.simple_list_item_1,
+        R.layout.emotion_item,
         emotions
     )
 
