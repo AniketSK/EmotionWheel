@@ -30,7 +30,8 @@ class EmotionListViewModelTest {
     }
 
     @Test
-    fun `what`() {
-        vm.viewState.test().assertValue { it.currentEmotion.name == "all" }
+    fun `vm is initialized with the correct value`() {
+        vm.viewState.test()
+            .assertValue { it.currentEmotion.name == "all" && it.currentEmotion.subEmotions.size == 7 }
     }
 }
