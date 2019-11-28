@@ -49,6 +49,6 @@ dependencies {
     implementation gson.lib
     testImplementation hamcrest.lib
     implementation timber.lib
-    implementation livedataCommunityTestHelper.lib
+    testImplementation livedataCommunityTestHelper.lib
     testImplementation lifecycle.testhelper
 }
