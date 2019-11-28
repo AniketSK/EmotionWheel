@@ -20,7 +20,7 @@ class EmotionListViewModel(repo: IEmotionRepo) : ViewModel() {
 
     fun onListItemClicked(clickedEmotion: Emotion?) {
         clickedEmotion?.let {
-            navigationStack.push(it)
+            navigationStack.push(viewState.value!!.currentEmotion)
             _viewState.postValue(ViewState(it))
         }
     }
