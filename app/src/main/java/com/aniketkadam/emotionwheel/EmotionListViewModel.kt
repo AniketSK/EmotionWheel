@@ -3,8 +3,10 @@ package com.aniketkadam.emotionwheel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import java.util.*
 
-class EmotionListViewModel(repo: EmotionRepo) : ViewModel() {
+class EmotionListViewModel(repo: IEmotionRepo) : ViewModel() {
+
 
     private val _viewState by lazy {
         MutableLiveData<ViewState>().apply { ViewState(emptyList()) }
