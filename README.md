@@ -1,4 +1,4 @@
-# EmotionWheel
+# EmotionWheel [![Build Status](https://app.bitrise.io/app/56ba40fd5c2ff870/status.svg?token=NpjkA6O-Uw4CaCVLOzZLAg&branch=master)](https://app.bitrise.io/app/56ba40fd5c2ff870)
 An app to help you pick specifically what emotion you're feeling
 
 ## The Concept
