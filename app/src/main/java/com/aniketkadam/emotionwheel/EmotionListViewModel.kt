@@ -7,35 +7,32 @@ import java.util.*
 
 class EmotionListViewModel(repo: IEmotionRepo) : ViewModel() {
 
+    private val navigationStack: Stack<Emotion> = Stack()
 
-    private val _viewState by lazy {
-        MutableLiveData<ViewState>().apply { ViewState(emptyList()) }
-    }
+    private val _viewState = MutableLiveData<ViewState>()
 
     val viewState: LiveData<ViewState>
         get() = _viewState
 
     init {
-        _viewState.postValue(ViewState(repo.allEmotionList.subEmotions))
+        _viewState.postValue(ViewState(repo.allEmotionList))
     }
 
     fun onListItemClicked(clickedEmotion: Emotion?) {
-        clickedEmotion?.subEmotions?.let {
-
-            if (it.isNotEmpty()) { // There's more list to show
-                _viewState.postValue(ViewState(it))
-            } else // Final emotion
-            {
-                _viewState.postValue(ViewState(listOf(clickedEmotion)))
-            }
+        clickedEmotion?.let {
+            navigationStack.push(it)
+            _viewState.postValue(ViewState(it))
         }
     }
 
     fun backPressed() {
-        TODO()
+        if (!navigationStack.isEmpty()) {
+            _viewState.postValue(ViewState(navigationStack.pop()))
+        }
     }
+
 }
 
 data class ViewState(
-    val emotionList: List<Emotion>
+    val currentEmotion: Emotion
 )

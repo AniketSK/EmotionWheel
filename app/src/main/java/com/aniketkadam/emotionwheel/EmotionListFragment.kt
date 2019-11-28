@@ -49,7 +49,7 @@ class EmotionListFragment : ListFragment() {
     }
 
     private fun renderState(state: ViewState) {
-        listAdapter = getAdapter(state.emotionList)
+        listAdapter = getAdapter(state.currentEmotion.subEmotions)
     }
 
     private fun getAdapter(emotions: List<Emotion>) = ArrayAdapter<Emotion>(
