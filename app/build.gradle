@@ -8,7 +8,7 @@ android {
     compileSdkVersion 29
     defaultConfig {
         applicationId "com.aniketkadam.emotionwheel"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -49,4 +49,6 @@ dependencies {
     implementation gson.lib
     testImplementation hamcrest.lib
     implementation timber.lib
+    implementation livedataCommunityTestHelper.lib
+    testImplementation lifecycle.testhelper
 }
