@@ -120,4 +120,19 @@ class EmotionListViewModelTest {
         }
     }
 
+    @Test
+    fun `when the first header item is clicked while on the list of all items, nothing happens`() {
+        vm.headerIndexClicked(0)
+
+        vm.viewState.test().assertValue {
+            System.out.println("list contains: ${it.headerList}")
+            it.headerList == listOf("all")
+        }
+
+        vm.viewState.test().assertValue {
+            System.out.print(it.currentEmotion)
+            it.currentEmotion.name == "all"
+        }
+
+    }
 }
