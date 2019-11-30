@@ -31,6 +31,12 @@ class EmotionListViewModel(repo: IEmotionRepo) : ViewModel() {
         }
     }
 
+    fun headerIndexClicked(position: Int) {
+        if (position != 0) {
+            repeat(position - 1) { navigationStack.pop() }
+            _viewState.postValue(ViewState(navigationStack.pop()))
+        }
+    }
 }
 
 data class ViewState(
