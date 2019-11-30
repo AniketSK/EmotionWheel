@@ -4,15 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/headerList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="top"
-        android:fontFamily="bold"
-        android:padding="10dp"
-        android:text="@string/start"
-        android:textColor="@android:color/black"
-        android:textSize="24sp" />
+        android:layout_gravity="top" />
 
     <ListView
         android:id="@android:id/list"

@@ -10,10 +10,13 @@ import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.ListFragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.aniketkadam.emotionwheel.header.HeaderListAdapter
 import kotlinx.android.synthetic.main.emotion_list_fragment_layout.*
 
 class EmotionListFragment : ListFragment() {
 
+    lateinit var headerListAdapter: HeaderListAdapter
     private val backPressedCallback: OnBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
             vm.backPressed()
@@ -42,16 +45,23 @@ class EmotionListFragment : ListFragment() {
         vm = ViewModelProviders.of(
             this,
             EmotionListFactory(EmotionRepo(requireActivity().application))
-        )
-            .get(EmotionListViewModel::class.java)
+        ).get(EmotionListViewModel::class.java)
+
+        headerList.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        headerListAdapter = HeaderListAdapter(vm::headerIndexClicked)
+        headerList.adapter = headerListAdapter
+
         vm.viewState.observe(viewLifecycleOwner, Observer {
             renderState(it)
         })
+
     }
 
     private fun renderState(state: ViewState) {
         listAdapter = getAdapter(state.currentEmotion.subEmotions)
         empty.text = state.currentEmotion.name
+        headerListAdapter.submitList(state.headerList)
     }
 
     private fun getAdapter(emotions: List<Emotion>) = ArrayAdapter<Emotion>(
