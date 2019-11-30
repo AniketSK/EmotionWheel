@@ -27,6 +27,7 @@ class EmotionListViewModelTest {
     @Before
     fun setup() {
         vm = EmotionListViewModel(repo)
+        vm.viewState.test() // Required for the livedata to be inited.
     }
 
     @Test
@@ -71,7 +72,7 @@ class EmotionListViewModelTest {
 
         vm.viewState.test().assertValue {
             System.out.println("list contains: ${it.headerList}")
-            it.headerList == listOf("All", "Happy")
+            it.headerList == listOf("all", "Happy")
         }
     }
 }
