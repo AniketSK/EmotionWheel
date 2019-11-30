@@ -48,7 +48,7 @@ class EmotionListFragment : ListFragment() {
         ).get(EmotionListViewModel::class.java)
 
         headerList.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         headerListAdapter = HeaderListAdapter(vm::headerIndexClicked)
         headerList.adapter = headerListAdapter
 
