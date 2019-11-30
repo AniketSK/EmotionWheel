@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.ListAdapter
 import com.aniketkadam.emotionwheel.R
 import com.aniketkadam.emotionwheel.databinding.HeaderItemBinding
 
-class HeaderListAdapter : ListAdapter<String, HeaderViewHolder>(DIFF_CALLBACK) {
+class HeaderListAdapter(private val onClick: (Int) -> Unit) :
+    ListAdapter<String, HeaderViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HeaderViewHolder {
         val view = DataBindingUtil.inflate<HeaderItemBinding>(
@@ -17,7 +18,7 @@ class HeaderListAdapter : ListAdapter<String, HeaderViewHolder>(DIFF_CALLBACK) {
             parent,
             false
         )
-        return HeaderViewHolder(view) { getItem(it) }
+        return HeaderViewHolder(view, onClick)
     }
 
     override fun onBindViewHolder(holder: HeaderViewHolder, position: Int) {
