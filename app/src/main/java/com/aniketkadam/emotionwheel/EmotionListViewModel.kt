@@ -37,6 +37,10 @@ class EmotionListViewModel(repo: IEmotionRepo) : ViewModel() {
         if (position != 0) {
             repeat(navigationStack.size - position - 1) { navigationStack.pop() }
             _currentEmotion.postValue(navigationStack.pop())
+        } else if (!navigationStack.empty()) {
+            val firstElement = navigationStack.firstElement()
+            navigationStack.clear()
+            _currentEmotion.postValue(firstElement)
         }
     }
 }
