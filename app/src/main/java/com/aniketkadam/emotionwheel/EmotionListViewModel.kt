@@ -2,6 +2,7 @@ package com.aniketkadam.emotionwheel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import java.util.*
 
@@ -9,45 +10,33 @@ class EmotionListViewModel(repo: IEmotionRepo) : ViewModel() {
 
     private val navigationStack: Stack<Emotion> = Stack()
 
-    private val _viewState = MutableLiveData<ViewState>()
+    private val _currentEmotion = MutableLiveData<Emotion>()
 
-    val viewState: LiveData<ViewState>
-        get() = _viewState
+    val viewState: LiveData<ViewState> = Transformations.map(_currentEmotion) {
+        ViewState(it, navigationStack.map { it.name }.plus(listOf(it.name)))
+    }
 
     init {
-        _viewState.postValue(ViewState(repo.allEmotionList, listOf("All")))
+        _currentEmotion.postValue(repo.allEmotionList)
     }
 
     fun onListItemClicked(clickedEmotion: Emotion?) {
         clickedEmotion?.let {
             navigationStack.push(viewState.value!!.currentEmotion)
-            _viewState.postValue(ViewState(it, getCurrentHeaderList().plus(it.name)))
+            _currentEmotion.postValue(it)
         }
     }
 
-    private fun getCurrentHeaderList() =
-        _viewState.value!!.headerList
-
-
     fun backPressed() {
         if (!navigationStack.isEmpty()) {
-            _viewState.postValue(
-                ViewState(
-                    navigationStack.pop(),
-                    getCurrentHeaderList().dropLast(1)
-                )
-            )
+            _currentEmotion.postValue(navigationStack.pop())
         }
     }
 
     fun headerIndexClicked(position: Int) {
         if (position != 0) {
             repeat(position - 1) { navigationStack.pop() }
-            _viewState.postValue(
-                ViewState(
-                    navigationStack.pop(),
-                    getCurrentHeaderList().filterIndexed { index, _ -> index <= position })
-            )
+            _currentEmotion.postValue(navigationStack.pop())
         }
     }
 }
