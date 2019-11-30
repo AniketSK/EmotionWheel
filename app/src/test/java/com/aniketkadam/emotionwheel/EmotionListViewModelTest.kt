@@ -101,4 +101,23 @@ class EmotionListViewModelTest {
         }
 
     }
+
+    @Test
+    fun `when the first header item is clicked, it returns to the list of all of them`() {
+        repeat(3) { vm.onListItemClicked(vm.viewState.value!!.currentEmotion.subEmotions[1]) }
+        vm.viewState.test().assertValue { it.currentEmotion.name == "Joyful" }
+
+        vm.headerIndexClicked(0)
+
+        vm.viewState.test().assertValue {
+            System.out.println("list contains: ${it.headerList}")
+            it.headerList == listOf("all")
+        }
+
+        vm.viewState.test().assertValue {
+            System.out.print(it.currentEmotion)
+            it.currentEmotion.name == "all"
+        }
+    }
+
 }
