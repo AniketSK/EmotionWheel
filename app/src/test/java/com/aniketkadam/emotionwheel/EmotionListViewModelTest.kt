@@ -75,4 +75,30 @@ class EmotionListViewModelTest {
             it.headerList == listOf("all", "Happy")
         }
     }
+
+    @Test
+    fun what() {
+        // click surprised, startled, shocked,
+        // on the header list, click surprised
+        repeat(3) { vm.onListItemClicked(vm.viewState.value!!.currentEmotion.subEmotions[0]) }
+
+        vm.headerIndexClicked(1)
+
+        // check
+        // header list
+        // displayed emotions!
+
+        val expectedHeaderList = listOf("all", "Surprised")
+
+        vm.viewState.test().assertValue {
+            System.out.println(it.headerList)
+            it.headerList == expectedHeaderList
+        }
+
+        vm.viewState.test().assertValue {
+            System.out.println(it.currentEmotion)
+            it.currentEmotion.name == "Surprised"
+        }
+
+    }
 }
