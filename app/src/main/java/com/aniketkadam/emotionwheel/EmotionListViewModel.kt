@@ -35,7 +35,7 @@ class EmotionListViewModel(repo: IEmotionRepo) : ViewModel() {
 
     fun headerIndexClicked(position: Int) {
         if (position != 0) {
-            repeat(position - 1) { navigationStack.pop() }
+            repeat(navigationStack.size - position - 1) { navigationStack.pop() }
             _currentEmotion.postValue(navigationStack.pop())
         }
     }
