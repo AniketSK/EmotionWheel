@@ -91,13 +91,13 @@ class EmotionListViewModelTest {
         val expectedHeaderList = listOf("all", "Surprised")
 
         vm.viewState.test().assertValue {
-            System.out.println(it.headerList)
-            it.headerList == expectedHeaderList
+            System.out.println(it.currentEmotion)
+            it.currentEmotion.name == "Surprised"
         }
 
         vm.viewState.test().assertValue {
-            System.out.println(it.currentEmotion)
-            it.currentEmotion.name == "Surprised"
+            System.out.println(it.headerList)
+            it.headerList == expectedHeaderList
         }
 
     }
