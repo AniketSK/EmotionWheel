@@ -61,4 +61,17 @@ class EmotionListViewModelTest {
 
         vm.viewState.test().assertValue { it.currentEmotion.name == "Happy" }
     }
+
+    @Test
+    fun `when a header item is clicked, the header shows the appropriate list`() {
+        repeat(2) { vm.onListItemClicked(vm.viewState.value!!.currentEmotion.subEmotions[1]) }
+        vm.viewState.test().assertValue { it.currentEmotion.name == "Content" }
+
+        vm.headerIndexClicked(1)
+
+        vm.viewState.test().assertValue {
+            System.out.println("list contains: ${it.headerList}")
+            it.headerList == listOf("All", "Happy")
+        }
+    }
 }
