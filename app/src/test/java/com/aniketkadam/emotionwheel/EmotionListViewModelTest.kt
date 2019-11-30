@@ -77,7 +77,7 @@ class EmotionListViewModelTest {
     }
 
     @Test
-    fun what() {
+    fun `clicking further into the emotions then clicking the second header item, displays correctly`() {
         // click surprised, startled, shocked,
         // on the header list, click surprised
         repeat(3) { vm.onListItemClicked(vm.viewState.value!!.currentEmotion.subEmotions[0]) }
