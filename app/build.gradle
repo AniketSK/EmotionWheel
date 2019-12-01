@@ -51,7 +51,6 @@ dependencies {
     androidTestImplementation adxTestLib.espresso
     implementation lifecycle.extensions
     implementation lifecycle.java8compiler
-    implementation viewpager2Adx.lib
 
     implementation gson.lib
     testImplementation hamcrest.lib
