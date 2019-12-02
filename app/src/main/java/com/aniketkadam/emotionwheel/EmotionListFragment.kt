@@ -23,12 +23,12 @@ import javax.inject.Inject
 class EmotionListFragment : ListFragment(), HasAndroidInjector {
 
     @Inject
+    lateinit var vm: EmotionListViewModel
+
+    @Inject
     lateinit var androidInjector: DispatchingAndroidInjector<Any>
 
     override fun androidInjector(): AndroidInjector<Any> = androidInjector
-
-    @Inject
-    lateinit var vm: EmotionListViewModel
 
     override fun onAttach(context: Context) {
         AndroidSupportInjection.inject(this)
@@ -36,6 +36,7 @@ class EmotionListFragment : ListFragment(), HasAndroidInjector {
     }
 
     lateinit var headerListAdapter: HeaderListAdapter
+
     private val backPressedCallback: OnBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
             vm.backPressed()
