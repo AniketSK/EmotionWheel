@@ -59,4 +59,15 @@ dependencies {
     testImplementation lifecycle.testhelper
     implementation androidxDependencies.recyclerView
     implementation androidxDependencies.design
+
+
+    implementation dagger.lib
+    implementation dagger.support
+    kapt dagger.compiler
+    kapt dagger.androidAnnotationProcessor
+
+    kaptAndroidTest dagger.compiler
+    kaptAndroidTest dagger.androidAnnotationProcessor
+
+
 }
