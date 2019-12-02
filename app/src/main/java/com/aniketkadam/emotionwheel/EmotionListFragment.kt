@@ -1,5 +1,6 @@
 package com.aniketkadam.emotionwheel
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,9 +13,27 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aniketkadam.emotionwheel.header.HeaderListAdapter
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.HasAndroidInjector
+import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.emotion_list_fragment_layout.*
+import javax.inject.Inject
 
-class EmotionListFragment : ListFragment() {
+class EmotionListFragment : ListFragment(), HasAndroidInjector {
+
+    @Inject
+    lateinit var androidInjector: DispatchingAndroidInjector<Any>
+
+    override fun androidInjector(): AndroidInjector<Any> = androidInjector
+
+    @Inject
+    lateinit var vm: EmotionListViewModel
+
+    override fun onAttach(context: Context) {
+        AndroidSupportInjection.inject(this)
+        super.onAttach(context)
+    }
 
     lateinit var headerListAdapter: HeaderListAdapter
     private val backPressedCallback: OnBackPressedCallback = object : OnBackPressedCallback(true) {
@@ -22,8 +41,6 @@ class EmotionListFragment : ListFragment() {
             vm.backPressed()
         }
     }
-
-    lateinit var vm: EmotionListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

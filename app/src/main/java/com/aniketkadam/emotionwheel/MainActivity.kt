@@ -1,10 +1,10 @@
 package com.aniketkadam.emotionwheel
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import dagger.android.support.DaggerAppCompatActivity
 import timber.log.Timber
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : DaggerAppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
