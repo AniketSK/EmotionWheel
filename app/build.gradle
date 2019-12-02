@@ -63,6 +63,7 @@ dependencies {
 
     implementation dagger.lib
     implementation dagger.support
+    implementation dagger.android
     kapt dagger.compiler
     kapt dagger.androidAnnotationProcessor
 
