@@ -4,9 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
+import com.aniketkadam.emotionwheel.storage.EmotionDao
 import java.util.*
 
-class EmotionListViewModel(repo: IEmotionRepo) : ViewModel() {
+class EmotionListViewModel(repo: IEmotionRepo, emotionDao: EmotionDao) : ViewModel() {
 
     private val navigationStack: Stack<Emotion> = Stack()
 
