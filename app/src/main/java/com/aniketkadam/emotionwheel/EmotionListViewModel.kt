@@ -4,10 +4,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
+import com.aniketkadam.emotionwheel.data.EmotionJourney
 import com.aniketkadam.emotionwheel.storage.EmotionDao
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 import java.util.*
 
 class EmotionListViewModel(repo: IEmotionRepo, emotionDao: EmotionDao) : ViewModel() {
+
+    private val disposable = CompositeDisposable()
 
     private val navigationStack: Stack<Emotion> = Stack()
 
@@ -15,6 +20,21 @@ class EmotionListViewModel(repo: IEmotionRepo, emotionDao: EmotionDao) : ViewMod
 
     val viewState: LiveData<ViewState> = Transformations.map(_currentEmotion) {
         ViewState(it, navigationStack.map { it.name }.plus(listOf(it.name)))
+    }
+
+    private val _emotionFound = Transformations.map(viewState) {
+        it.takeIf { it.currentEmotion.subEmotions.isEmpty() }?.let {
+            disposable.add(
+                emotionDao.insert(
+                    EmotionJourney(
+                        System.currentTimeMillis(),
+                        it.headerList
+                    )
+                ).subscribeOn(
+                    Schedulers.io()
+                ).subscribe()
+            )
+        }
     }
 
     init {
@@ -43,6 +63,11 @@ class EmotionListViewModel(repo: IEmotionRepo, emotionDao: EmotionDao) : ViewMod
             navigationStack.clear()
             _currentEmotion.postValue(firstElement)
         }
+    }
+
+    override fun onCleared() {
+        disposable.clear()
+        super.onCleared()
     }
 }
 
