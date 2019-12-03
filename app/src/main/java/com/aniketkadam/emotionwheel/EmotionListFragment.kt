@@ -10,7 +10,6 @@ import android.widget.ListView
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.ListFragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aniketkadam.emotionwheel.header.HeaderListAdapter
 import dagger.android.AndroidInjector
@@ -58,13 +57,8 @@ class EmotionListFragment : ListFragment(), HasAndroidInjector {
         return inflater.inflate(R.layout.emotion_list_fragment_layout, container)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        vm = ViewModelProviders.of(
-            this,
-            EmotionListFactory(EmotionRepo(requireActivity().application))
-        ).get(EmotionListViewModel::class.java)
-
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
         headerList.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         headerListAdapter = HeaderListAdapter(vm::headerIndexClicked)
@@ -73,7 +67,6 @@ class EmotionListFragment : ListFragment(), HasAndroidInjector {
         vm.viewState.observe(viewLifecycleOwner, Observer {
             renderState(it)
         })
-
     }
 
     private fun renderState(state: ViewState) {
