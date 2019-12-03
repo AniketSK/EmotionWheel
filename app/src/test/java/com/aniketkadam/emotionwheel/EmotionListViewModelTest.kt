@@ -1,8 +1,11 @@
 package com.aniketkadam.emotionwheel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.aniketkadam.emotionwheel.storage.EmotionDao
 import com.google.gson.Gson
 import com.jraska.livedata.test
+import io.mockk.MockKAnnotations
+import io.mockk.impl.annotations.MockK
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -21,12 +24,15 @@ class EmotionListViewModelTest {
                     Emotion::class.java
                 )
             }
-
     }
+
+    @MockK
+    lateinit var emotionDao: EmotionDao
 
     @Before
     fun setup() {
-        vm = EmotionListViewModel(repo)
+        MockKAnnotations.init(this)
+        vm = EmotionListViewModel(repo, emotionDao)
         vm.viewState.test() // Required for the livedata to be inited.
     }
 
@@ -135,4 +141,5 @@ class EmotionListViewModelTest {
         }
 
     }
+
 }

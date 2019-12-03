@@ -85,4 +85,7 @@ dependencies {
     implementation room.rxjava
     kapt room.compiler
     testImplementation room.test
+
+    testImplementation mockk.lib
+    testImplementation mockk.android
 }
