@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: "androidx.navigation.safeargs"
+
 apply plugin: 'kotlin-kapt'
 
 android {
@@ -88,4 +90,7 @@ dependencies {
 
     testImplementation mockk.lib
     testImplementation mockk.android
+
+    implementation navigation.fragment
+    implementation navigation.ui
 }
