@@ -4,8 +4,6 @@ import androidx.lifecycle.ViewModelProviders
 import com.aniketkadam.emotionwheel.EmotionListFactory
 import com.aniketkadam.emotionwheel.EmotionListFragment
 import com.aniketkadam.emotionwheel.EmotionListViewModel
-import com.aniketkadam.emotionwheel.storage.EmotionDao
-import com.aniketkadam.emotionwheel.storage.EmotionDatabase
 import dagger.Module
 import dagger.Provides
 
@@ -21,7 +19,4 @@ object EmotionListFragmentModule {
     ): EmotionListViewModel =
         ViewModelProviders.of(fragment, emotionListFactory).get(EmotionListViewModel::class.java)
 
-    @JvmStatic
-    @Provides
-    fun provideEmotionDao(database: EmotionDatabase): EmotionDao = database.getEmotionDao()
 }
