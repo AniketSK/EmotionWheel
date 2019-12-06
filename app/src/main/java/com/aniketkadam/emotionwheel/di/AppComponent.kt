@@ -1,5 +1,6 @@
 package com.aniketkadam.emotionwheel.di
 
+import com.aniketkadam.emotionwheel.storage.di.DatabaseModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
@@ -12,6 +13,7 @@ import javax.inject.Singleton
     modules = [
         AndroidInjectionModule::class,
         ActivityBuilderModule::class,
+        DatabaseModule::class,
         AppModule::class]
 )
 interface AppComponent : AndroidInjector<DaggerApplication> {

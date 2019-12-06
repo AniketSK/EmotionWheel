@@ -16,6 +16,15 @@ android {
         versionName "1.4"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
+    kapt {
+        arguments {
+            arg("room.schemaLocation", "$projectDir/schemas".toString())
+            arg("room.incremental", true)
+            arg("room.expandProjection", true)
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled true
@@ -37,6 +46,8 @@ android {
     dataBinding {
         enabled = true
     }
+
+
 
 }
 
@@ -70,5 +81,11 @@ dependencies {
     kaptAndroidTest dagger.compiler
     kaptAndroidTest dagger.androidAnnotationProcessor
 
+    implementation room.lib
+    implementation room.rxjava
+    kapt room.compiler
+    testImplementation room.test
 
+    testImplementation mockk.lib
+    testImplementation mockk.android
 }

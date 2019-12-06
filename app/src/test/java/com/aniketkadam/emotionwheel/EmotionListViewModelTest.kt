@@ -1,8 +1,14 @@
 package com.aniketkadam.emotionwheel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.aniketkadam.emotionwheel.storage.EmotionDao
 import com.google.gson.Gson
 import com.jraska.livedata.test
+import io.mockk.MockKAnnotations
+import io.mockk.every
+import io.mockk.impl.annotations.MockK
+import io.mockk.verify
+import io.reactivex.Completable
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -21,12 +27,16 @@ class EmotionListViewModelTest {
                     Emotion::class.java
                 )
             }
-
     }
+
+    @MockK
+    lateinit var emotionDao: EmotionDao
 
     @Before
     fun setup() {
-        vm = EmotionListViewModel(repo)
+        MockKAnnotations.init(this)
+        every { emotionDao.insert(any()) } returns Completable.complete()
+        vm = EmotionListViewModel(repo, emotionDao)
         vm.viewState.test() // Required for the livedata to be inited.
     }
 
@@ -134,5 +144,24 @@ class EmotionListViewModelTest {
             it.currentEmotion.name == "all"
         }
 
+    }
+
+    @Test
+    fun `when the last emotion in a sublist is selected, the journey is saved`() {
+        val lastEmotion = Emotion("Last", 1, emptyList())
+        val iEmotionRepo = object : IEmotionRepo {
+            override val allEmotionList: Emotion
+                get() = Emotion("first", 2, listOf(lastEmotion))
+        }
+
+        val customVm = EmotionListViewModel(iEmotionRepo, emotionDao)
+        val viewObserver = customVm.viewState.test()
+        customVm.onListItemClicked(customVm.viewState.value!!.currentEmotion.subEmotions[0])
+        viewObserver.assertValue {
+            System.out.print(it.currentEmotion)
+            it.currentEmotion == lastEmotion
+        }
+
+        verify(exactly = 1) { emotionDao.insert(any()) }
     }
 }

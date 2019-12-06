@@ -4,17 +4,40 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
+import com.aniketkadam.emotionwheel.data.EmotionJourney
+import com.aniketkadam.emotionwheel.storage.EmotionDao
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
+import timber.log.Timber
 import java.util.*
 
-class EmotionListViewModel(repo: IEmotionRepo) : ViewModel() {
+class EmotionListViewModel(repo: IEmotionRepo, emotionDao: EmotionDao) : ViewModel() {
+
+    private val disposable = CompositeDisposable()
 
     private val navigationStack: Stack<Emotion> = Stack()
 
     private val _currentEmotion = MutableLiveData<Emotion>()
 
-    val viewState: LiveData<ViewState> = Transformations.map(_currentEmotion) {
+    private val _viewState: LiveData<ViewState> = Transformations.map(_currentEmotion) {
         ViewState(it, navigationStack.map { it.name }.plus(listOf(it.name)))
     }
+
+    private val _saveEmotionWhenEmpty = Transformations.map(_viewState) {
+        it.takeIf { it.currentEmotion.subEmotions.isEmpty() }?.let {
+            Timber.d("Saving data")
+            disposable.add(
+                emotionDao.insert(
+                    EmotionJourney(
+                        System.currentTimeMillis(),
+                        it.headerList
+                    )
+                ).subscribeOn(Schedulers.io()).subscribe()
+            )
+        }
+    }
+
+    val viewState: LiveData<ViewState> = LifecycleBinder(_viewState, _saveEmotionWhenEmpty)
 
     init {
         _currentEmotion.postValue(repo.allEmotionList)
@@ -42,6 +65,11 @@ class EmotionListViewModel(repo: IEmotionRepo) : ViewModel() {
             navigationStack.clear()
             _currentEmotion.postValue(firstElement)
         }
+    }
+
+    override fun onCleared() {
+        disposable.clear()
+        super.onCleared()
     }
 }
 
