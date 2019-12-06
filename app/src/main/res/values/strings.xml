@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Emotion Wheel</string>
     <string name="start">Start</string>
+    <string name="emotion_journey_empty">You have no saved emotion journeys yet. Have you tried clicking on one emotion from the list until there\'s only the last one left?</string>
 </resources>
