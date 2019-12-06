@@ -13,6 +13,6 @@ interface EmotionDao {
     @Insert
     fun insert(emotionJourney: EmotionJourney): Completable
 
-    @Query("SELECT * from EmotionJourney")
+    @Query("SELECT * from EmotionJourney ORDER BY time DESC")
     fun getAllJourneys(): LiveData<List<EmotionJourney>>
 }
