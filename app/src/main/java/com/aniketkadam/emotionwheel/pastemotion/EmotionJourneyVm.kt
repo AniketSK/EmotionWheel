@@ -17,8 +17,15 @@ class EmotionJourneyVm(emotionDao: EmotionDao) : ViewModel() {
 
     private fun journeyToView(journey: EmotionJourney): EmotionJourneyView = EmotionJourneyView(
         journey,
-        "${formatter.print(Instant(journey.time))}:\n ${journey.emotionPath.joinToString(" -> ")}"
+        "${getDateRepresentation(journey)}:\n${getPathRepresentation(journey)}"
     )
+
+    private fun getPathRepresentation(journey: EmotionJourney): String =
+        journey.emotionPath.joinToString(" -> ")
+
+    private fun getDateRepresentation(journey: EmotionJourney): String {
+        return formatter.print(Instant(journey.time))
+    }
 
 }
 
@@ -26,9 +33,3 @@ data class ViewState(
     val emotionJourneys: List<EmotionJourneyView>
 )
 
-data class EmotionJourneyView(
-    val emotionJourneys: EmotionJourney,
-    val textRepresentation: String
-) {
-    override fun toString(): String = textRepresentation
-}
