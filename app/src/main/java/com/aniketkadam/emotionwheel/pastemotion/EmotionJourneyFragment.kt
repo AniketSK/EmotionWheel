@@ -9,7 +9,6 @@ import android.widget.ArrayAdapter
 import androidx.fragment.app.ListFragment
 import androidx.lifecycle.Observer
 import com.aniketkadam.emotionwheel.R
-import com.aniketkadam.emotionwheel.data.EmotionJourney
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
@@ -51,7 +50,8 @@ class EmotionJourneyFragment : ListFragment(), HasAndroidInjector {
         listAdapter = getAdapter(viewState.emotionJourneys)
     }
 
-    private fun getAdapter(emotionJourneys: List<EmotionJourney>) = ArrayAdapter<EmotionJourney>(
+    private fun getAdapter(emotionJourneys: List<EmotionJourneyView>) =
+        ArrayAdapter<EmotionJourneyView>(
         requireActivity(),
         R.layout.emotion_journey_item,
         emotionJourneys
