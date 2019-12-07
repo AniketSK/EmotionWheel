@@ -98,4 +98,5 @@ dependencies {
     implementation androidXFragment.lib
     testImplementation androidXFragment.test
 
+    implementation time.lib
 }
