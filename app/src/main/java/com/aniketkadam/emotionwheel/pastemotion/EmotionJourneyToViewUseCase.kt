@@ -20,6 +20,7 @@ class EmotionJourneyToViewUseCase {
     val afternoonEnd = localTime.withHourOfDay(18)
     val eveningStart = localTime.withHourOfDay(18)
     val nightStart = localTime.withHourOfDay(21)
+    val nightLastMomentOfTheDay = localTime.minusMillis(1)
 
 
     private fun getPathRepresentation(journey: EmotionJourney): String =
@@ -50,7 +51,7 @@ class EmotionJourneyToViewUseCase {
                 TimesOfDay.AFTERNOON
             else if (isWithinInterval(eveningStart, nightStart))
                 TimesOfDay.EVENING
-            else if (isWithinInterval(nightStart, midnight))
+            else if (isWithinInterval(nightStart, nightLastMomentOfTheDay))
                 TimesOfDay.NIGHT
             else TimesOfDay.UNKNOWN
         }
