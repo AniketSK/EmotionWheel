@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/emotionListFragment">
+
+    <fragment
+        android:id="@+id/emotionListFragment"
+        android:name="com.aniketkadam.emotionwheel.EmotionListFragment"
+        android:label="EmotionListFragment">
+        <action
+            android:id="@+id/action_emotionListFragment_to_emotionJourneyFragment"
+            app:destination="@id/emotionJourneyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/emotionJourneyFragment"
+        android:name="com.aniketkadam.emotionwheel.pastemotion.EmotionJourneyFragment"
+        android:label="EmotionJourneyFragment">
+        <action
+            android:id="@+id/action_emotionJourneyFragment_to_emotionListFragment"
+            app:destination="@id/emotionListFragment" />
+    </fragment>
+</navigation>
