@@ -45,7 +45,7 @@ class EmotionJourneyToViewUseCase {
             return if (isWithinInterval(midnight, morningStart))
                 TimesOfDay.DEEP_NIGHT
             else if (isWithinInterval(morningStart, morningEnd))
-                TimesOfDay.MORING
+                TimesOfDay.MORNING
             else if (isWithinInterval(afternoonStart, afternoonEnd))
                 TimesOfDay.AFTERNOON
             else if (isWithinInterval(eveningStart, nightStart))
@@ -64,5 +64,5 @@ class EmotionJourneyToViewUseCase {
 }
 
 enum class TimesOfDay {
-    DEEP_NIGHT, MORING, AFTERNOON, EVENING, NIGHT, UNKNOWN
+    DEEP_NIGHT, MORNING, AFTERNOON, EVENING, NIGHT, UNKNOWN
 }

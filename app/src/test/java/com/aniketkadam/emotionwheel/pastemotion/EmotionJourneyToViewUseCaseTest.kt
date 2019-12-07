@@ -36,8 +36,8 @@ class EmotionJourneyToViewUseCaseTest {
         val morningStart = midnightJourney.copy(time = getDayWithTimeSetTo(6, 0))
         val morningEnd = midnightJourney.copy(time = getDayWithTimeSetTo(11, 59))
 
-        assertThat(uc.getTimeOfDay(morningStart), equalTo(TimesOfDay.MORING))
-        assertThat(uc.getTimeOfDay(morningEnd), equalTo(TimesOfDay.MORING))
+        assertThat(uc.getTimeOfDay(morningStart), equalTo(TimesOfDay.MORNING))
+        assertThat(uc.getTimeOfDay(morningEnd), equalTo(TimesOfDay.MORNING))
     }
 
     @Test
