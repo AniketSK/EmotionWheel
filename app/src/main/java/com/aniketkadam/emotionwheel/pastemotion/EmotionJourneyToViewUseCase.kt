@@ -37,7 +37,7 @@ class EmotionJourneyToViewUseCase {
 
     @VisibleForTesting
     fun getTextRepresentation(journey: EmotionJourney, stringMapper: TranslationStringMapper) =
-        "${stringMapper.getStringForId(getTimeOfDay(journey).displayNameStringId)} ${getDateRepresentation(
+        "${stringMapper.getStringForId(getTimeOfDay(journey).displayNameStringId)}\n:\n${getDateRepresentation(
             journey
         )}:\n${getPathRepresentation(journey)}"
 
