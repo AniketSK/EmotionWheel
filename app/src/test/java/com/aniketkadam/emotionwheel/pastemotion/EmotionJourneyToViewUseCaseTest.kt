@@ -31,6 +31,23 @@ class EmotionJourneyToViewUseCaseTest {
         )
     }
 
+    @Test
+    fun `morning is calculated correctly`() {
+        val morningStart = midnightJourney.copy(time = getDayWithTimeSetTo(6, 0))
+        val morningEnd = midnightJourney.copy(time = getDayWithTimeSetTo(11, 59))
+
+        assertThat(uc.getTimeOfDay(morningStart), equalTo(TimesOfDay.MORING))
+        assertThat(uc.getTimeOfDay(morningEnd), equalTo(TimesOfDay.MORING))
+    }
+
+    @Test
+    fun `afternoon is calculated correctly`() {
+        val afternoonStart = midnightJourney.copy(time = getDayWithTimeSetTo(12, 0))
+        val afternoonEnd = midnightJourney.copy(time = getDayWithTimeSetTo(17, 59))
+        assertThat(uc.getTimeOfDay(afternoonStart), equalTo(TimesOfDay.AFTERNOON))
+        assertThat(uc.getTimeOfDay(afternoonEnd), equalTo(TimesOfDay.AFTERNOON))
+    }
+
     private fun getDayWithTimeSetTo(hour: Int, minutes: Int = 0) =
         DateTime(2019, 12, 7, hour, minutes).millis
 }
