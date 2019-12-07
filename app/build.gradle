@@ -49,7 +49,11 @@ android {
         enabled = true
     }
 
-
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
 
 }
 
@@ -99,4 +103,6 @@ dependencies {
     testImplementation androidXFragment.test
 
     implementation time.lib
+
+    testImplementation robolectric.lib
 }
