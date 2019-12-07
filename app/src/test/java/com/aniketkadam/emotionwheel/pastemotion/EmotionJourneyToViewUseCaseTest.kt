@@ -57,6 +57,15 @@ class EmotionJourneyToViewUseCaseTest {
         assertThat(uc.getTimeOfDay(eveningEnd), equalTo(TimesOfDay.EVENING))
     }
 
+    @Test
+    fun `night is calculated correctly`() {
+        val nightStart = midnightJourney.copy(time = getDayWithTimeSetTo(21, 0))
+        val nightEnd = midnightJourney.copy(time = getDayWithTimeSetTo(23, 59))
+
+        assertThat(uc.getTimeOfDay(nightStart), equalTo(TimesOfDay.NIGHT))
+        assertThat(uc.getTimeOfDay(nightEnd), equalTo(TimesOfDay.NIGHT))
+    }
+
     private fun getDayWithTimeSetTo(hour: Int, minutes: Int = 0) =
         DateTime(2019, 12, 7, hour, minutes).millis
 }
