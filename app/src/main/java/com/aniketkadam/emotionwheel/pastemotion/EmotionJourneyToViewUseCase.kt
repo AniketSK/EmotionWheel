@@ -16,6 +16,8 @@ class EmotionJourneyToViewUseCase {
     val midnight = localTime.withHourOfDay(0)
     val morningStart = localTime.withHourOfDay(6)
     val morningEnd = localTime.withHourOfDay(12)
+    val afternoonStart = localTime.withHourOfDay(12)
+    val afternoonEnd = localTime.withHourOfDay(18)
     val eveningStart = localTime.withHourOfDay(18)
     val nightStart = localTime.withHourOfDay(21)
 
@@ -42,8 +44,14 @@ class EmotionJourneyToViewUseCase {
         with(journalEntry) {
             return if (isWithinInterval(midnight, morningStart))
                 TimesOfDay.DEEP_NIGHT
-            else if (isEqual(morningStart) || (isAfter(morningStart) && isBefore(morningEnd)))
+            else if (isWithinInterval(morningStart, morningEnd))
                 TimesOfDay.MORING
+            else if (isWithinInterval(afternoonStart, afternoonEnd))
+                TimesOfDay.AFTERNOON
+            else if (isWithinInterval(eveningStart, nightStart))
+                TimesOfDay.EVENING
+            else if (isWithinInterval(nightStart, midnight))
+                TimesOfDay.NIGHT
             else TimesOfDay.UNKNOWN
         }
 
