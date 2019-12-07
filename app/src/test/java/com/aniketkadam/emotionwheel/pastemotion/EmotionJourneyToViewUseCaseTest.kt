@@ -66,6 +66,16 @@ class EmotionJourneyToViewUseCaseTest {
         assertThat(uc.getTimeOfDay(nightEnd), equalTo(TimesOfDay.NIGHT))
     }
 
+    @Test
+    fun `last moment of night is calculated correctly`() {
+        val lastMomentsOfNight =
+            midnightJourney.copy(time = DateTime(2019, 12, 7, 23, 59, 59, 1).millis)
+        val lastMomentsOfNight2 =
+            midnightJourney.copy(time = DateTime(2019, 12, 7, 23, 59, 59, 999).millis)
+        assertThat(uc.getTimeOfDay(lastMomentsOfNight), equalTo(TimesOfDay.NIGHT))
+        assertThat(uc.getTimeOfDay(lastMomentsOfNight2), equalTo(TimesOfDay.NIGHT))
+    }
+
     private fun getDayWithTimeSetTo(hour: Int, minutes: Int = 0) =
         DateTime(2019, 12, 7, hour, minutes).millis
 }
