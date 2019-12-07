@@ -1,7 +1,10 @@
 package com.aniketkadam.emotionwheel.pastemotion
 
+import android.app.Application
+import androidx.test.platform.app.InstrumentationRegistry
 import com.aniketkadam.emotionwheel.data.EmotionJourney
 import org.hamcrest.MatcherAssert.assertThat
+import org.hamcrest.Matchers.containsString
 import org.hamcrest.Matchers.equalTo
 import org.joda.time.DateTime
 import org.junit.Before
@@ -74,6 +77,17 @@ class EmotionJourneyToViewUseCaseTest {
             midnightJourney.copy(time = DateTime(2019, 12, 7, 23, 59, 59, 999).millis)
         assertThat(uc.getTimeOfDay(lastMomentsOfNight), equalTo(TimesOfDay.NIGHT))
         assertThat(uc.getTimeOfDay(lastMomentsOfNight2), equalTo(TimesOfDay.NIGHT))
+    }
+
+    @Test
+    fun `the correct text string is returned for one time`() {
+        val journey = midnightJourney.copy(
+            time = getDayWithTimeSetTo(6, 0),
+            emotionPath = listOf("All", "Happy")
+        )
+        val stringMapper =
+            AndroidTranslationStringMapper(InstrumentationRegistry.getInstrumentation().context as Application)
+        assertThat(uc.getTextRepresentation(journey, stringMapper), containsString("Morning"))
     }
 
     private fun getDayWithTimeSetTo(hour: Int, minutes: Int = 0) =
