@@ -4,12 +4,20 @@ import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.aniketkadam.emotionwheel.storage.EmotionDao
 
-class EmotionJourneyVm(emotionDao: EmotionDao) : ViewModel() {
+class EmotionJourneyVm(emotionDao: EmotionDao, stringMapper: TranslationStringMapper) :
+    ViewModel() {
 
     private val journeyViewConverter = EmotionJourneyToViewUseCase()
 
     val viewState =
-        Transformations.map(emotionDao.getAllJourneys()) { ViewState(it.map(journeyViewConverter::journeyToView)) }
+        Transformations.map(emotionDao.getAllJourneys()) {
+            ViewState(it.map {
+                journeyViewConverter.journeyToView(
+                    it,
+                    stringMapper
+                )
+            })
+        }
 
 }
 

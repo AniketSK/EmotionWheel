@@ -29,12 +29,17 @@ class EmotionJourneyToViewUseCase {
         return formatter.print(Instant(journey.time))
     }
 
-    fun journeyToView(journey: EmotionJourney): EmotionJourneyView =
-        EmotionJourneyView(journey, getTextRepresentation(journey))
+    fun journeyToView(
+        journey: EmotionJourney,
+        stringMapper: TranslationStringMapper
+    ): EmotionJourneyView =
+        EmotionJourneyView(journey, getTextRepresentation(journey, stringMapper))
 
     @VisibleForTesting
-    fun getTextRepresentation(journey: EmotionJourney) =
-        "${getDateRepresentation(journey)}:\n${getPathRepresentation(journey)}"
+    fun getTextRepresentation(journey: EmotionJourney, stringMapper: TranslationStringMapper) =
+        "${stringMapper.getStringForId(getTimeOfDay(journey).displayNameStringId)} ${getDateRepresentation(
+            journey
+        )}:\n${getPathRepresentation(journey)}"
 
     @VisibleForTesting
     fun getTimeOfDay(journey: EmotionJourney): TimesOfDay {
