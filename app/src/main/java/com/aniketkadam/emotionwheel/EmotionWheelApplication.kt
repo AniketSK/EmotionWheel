@@ -3,6 +3,7 @@ package com.aniketkadam.emotionwheel
 import com.aniketkadam.emotionwheel.di.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
+import timber.log.Timber
 
 class EmotionWheelApplication : DaggerApplication() {
 
@@ -12,4 +13,8 @@ class EmotionWheelApplication : DaggerApplication() {
 
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> = injector
 
+    override fun onCreate() {
+        Timber.plant(Timber.DebugTree())
+        super.onCreate()
+    }
 }
