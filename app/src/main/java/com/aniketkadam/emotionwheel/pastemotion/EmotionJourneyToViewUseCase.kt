@@ -34,7 +34,7 @@ class EmotionJourneyToViewUseCase {
         val morningStart = localTime.withHourOfDay(6)
         val morningEnd = localTime.withHourOfDay(12)
         val eveningStart = localTime.withHourOfDay(18)
-        val nightStart = localTime.withHourOfDay(9)
+        val nightStart = localTime.withHourOfDay(21)
 
         val journalEntry = LocalTime(journey.time)
 
