@@ -54,7 +54,7 @@ class EmotionListFragment : ListFragment(), HasAndroidInjector {
         savedInstanceState: Bundle?
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        return inflater.inflate(R.layout.emotion_list_fragment_layout, container)
+        return inflater.inflate(R.layout.emotion_list_fragment_layout, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
