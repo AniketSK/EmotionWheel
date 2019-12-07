@@ -63,6 +63,3 @@ class EmotionJourneyToViewUseCase {
 
 }
 
-enum class TimesOfDay {
-    DEEP_NIGHT, MORNING, AFTERNOON, EVENING, NIGHT, UNKNOWN
-}

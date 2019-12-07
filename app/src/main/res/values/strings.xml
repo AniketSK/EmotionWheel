@@ -4,4 +4,10 @@
     <string name="emotion_journey_empty">You have no saved emotion journeys yet. Have you tried clicking on one emotion from the list until there\'s only the last one left?</string>
     <string name="emotion_list_menu_option">Find What You Feel</string>
     <string name="emotion_journey_list_menu_option">See What You Felt Before</string>
+    <string name="deep_night">Late Night</string>
+    <string name="morning">Morning</string>
+    <string name="afternoon">Afternoon</string>
+    <string name="evening">Evening</string>
+    <string name="night">Night</string>
+    <string name="unknown_time">Unknown, please give feedback!</string>
 </resources>
