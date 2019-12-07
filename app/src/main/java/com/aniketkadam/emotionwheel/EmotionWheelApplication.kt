@@ -14,7 +14,9 @@ class EmotionWheelApplication : DaggerApplication() {
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> = injector
 
     override fun onCreate() {
-        Timber.plant(Timber.DebugTree())
+        if (BuildConfig.DEBUG) {
+            Timber.plant(Timber.DebugTree())
+        }
         super.onCreate()
     }
 }
