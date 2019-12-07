@@ -15,7 +15,7 @@ import org.robolectric.annotation.Config
 class EmotionJourneyToViewUseCaseTest {
 
     lateinit var uc: EmotionJourneyToViewUseCase
-    val midnightJourney = EmotionJourney(getDayWithHourSetTo(0).millis, emptyList())
+    val midnightJourney = EmotionJourney(getDayWithTimeSetTo(0), emptyList())
 
     @Before
     fun setup() {
@@ -23,9 +23,14 @@ class EmotionJourneyToViewUseCaseTest {
     }
 
     @Test
-    fun `time of day is calculated correctly`() {
+    fun `deep night is calculated correctly`() {
         assertThat(uc.getTimeOfDay(midnightJourney), equalTo(TimesOfDay.DEEP_NIGHT))
+        assertThat(
+            uc.getTimeOfDay(midnightJourney.copy(time = getDayWithTimeSetTo(5, 59))),
+            equalTo(TimesOfDay.DEEP_NIGHT)
+        )
     }
 
-    private fun getDayWithHourSetTo(hour: Int) = DateTime(2019, 12, 7, hour, 0)
+    private fun getDayWithTimeSetTo(hour: Int, minutes: Int = 0) =
+        DateTime(2019, 12, 7, hour, minutes).millis
 }
