@@ -94,4 +94,8 @@ dependencies {
     implementation navigation.fragment
     implementation navigation.ui
     implementation navigation.runtime
+
+    implementation androidXFragment.lib
+    testImplementation androidXFragment.test
+
 }
