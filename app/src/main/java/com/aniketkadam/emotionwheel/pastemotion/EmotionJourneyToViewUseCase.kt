@@ -58,7 +58,7 @@ class EmotionJourneyToViewUseCase {
 
     }
 
-    fun LocalTime.isWithinInterval(startInclusive: LocalTime, endExclusive: LocalTime) =
+    private fun LocalTime.isWithinInterval(startInclusive: LocalTime, endExclusive: LocalTime) =
         isEqual(startInclusive) || (isAfter(startInclusive) && isBefore(endExclusive))
 
 
