@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/emotionSelection"
+        android:icon="@drawable/thinking_face"
+        android:title="@string/emotion_list_menu_option"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/emotionJourneyList"
+        android:icon="@android:drawable/ic_menu_recent_history"
+        android:title="@string/emotion_journey_list_menu_option"
+        app:showAsAction="always" />
+</menu>
